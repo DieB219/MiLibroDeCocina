@@ -1,0 +1,24 @@
+  <a [routerLink]="''">
+    <article class="rounded-2xl overflow-hidden h-full shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]
+    hover:scale-105 transition-transform duration-100 animate-fade-up reveal-scroll">
+      <div class="w-full">
+        <img class="w-full h-52 object-cover" [src]="receta().imagen" [alt]="receta().nombre">
+      </div>
+    
+      <header class="font-bold flex items-center justify-between p-4">
+        <h3 class="text-2xl text-ellipsis overflow-hidden text-nowrap">{{receta().nombre}}</h3>
+        <span class="text-lg text-gray-600 flex items-center gap-2"><i class="fa-regular fa-clock"></i> {{receta().duracion}}</span>
+      </header>
+    
+      <p class="px-4 text-gray-600 text-ellipsis overflow-hidden line-clamp-2">{{receta().descripcion}}</p>
+    
+      <footer class="p-4 flex gap-2">
+        <span [class]="coloresDificultad()[receta().dificultad] + ' font-medium rounded-full py-1 px-3'">{{receta().dificultad}}</span>
+        <span class="border border-grtext-gray-600 rounded-full text-gray-600 py-1 px-3">{{receta().categoria}}</span>
+      </footer>
+    </article>
+
+  </a>
+
+
+

@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import "tailwindcss-animated";
+
+
+@utility reveal-scroll {
+    animation-timeline: view();
+    animation-range: entry 20% cover 30%;
+}
