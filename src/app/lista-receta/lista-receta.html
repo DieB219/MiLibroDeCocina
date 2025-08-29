@@ -5,9 +5,30 @@
   </div>
   
   <section class="mt-7 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-    @for (receta of recetas(); track receta.nombre) {
+    @for (receta of recetasPaginadas(); track receta.nombre) {
       <app-lista-receta-item [receta]="receta"/>
     }
   </section>
+
+  <div  class="flex justify-center items-center gap-2 mt-4">
+    <button (click)="cambiarPagina(paginaActual() - 1)" [disabled]="paginaActual() === 1"
+    class="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">Anterior</button>
+
+    
+    <span>
+      @for (page of paginas(); track page) {
+        <button 
+          (click)="cambiarPagina(page)"
+          [class.bg-blue-500]="paginaActual() === page"
+          class="px-3 py-1 rounded hover:bg-blue-300">
+          {{ page }}
+        </button>
+      }
+    </span>
+
+    <button (click)="cambiarPagina(paginaActual() + 1)" [disabled]="paginaActual() === paginasTotales()"
+      class="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">Siguiente</button>
+  </div>
+
 </section>
 

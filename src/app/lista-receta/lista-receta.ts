@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { ListaRecetaItem } from "./lista-receta-item/lista-receta-item";
 import { Toolbar } from "./toolbar/toolbar";
 
@@ -58,6 +58,45 @@ export default class ListaReceta {
       dificultad: 'Difícil',
       duracion: 50,
       imagen: 'https://d36fw6y2wq3bat.cloudfront.net/recipes/pollo-al-curry-con-col-rizada/900/pollo-al-curry-con-col-rizada_version_1698724941.jpg'
+    },
+    {
+      nombre: 'Sopa de verduras 2',
+      descripcion: 'Sopa nutritiva con una variedad de verduras frescas y caldo casero.',
+      categoria: 'Sopa',
+      dificultad: 'Fácil',
+      duracion: 45,
+      imagen: 'https://www.recetasnestle.com.ec/sites/default/files/srh_recipes/4010948fb50304fb70ecc9d6947ab4d7.jpg'
+    },
+    {
+      nombre: 'Pollo al curry 2',
+      descripcion: 'Pollo cocinado en una rica salsa de curry con arroz basmati.',
+      categoria: 'Plato principal',
+      dificultad: 'Difícil',
+      duracion: 50,
+      imagen: 'https://d36fw6y2wq3bat.cloudfront.net/recipes/pollo-al-curry-con-col-rizada/900/pollo-al-curry-con-col-rizada_version_1698724941.jpg'
     }
   ])
+
+  paginaActual = signal(1);
+  recetasPorPagina = signal(6);
+
+  paginasTotales = computed(() => {
+    return Math.ceil(this.recetas().length / this.recetasPorPagina());
+  })
+
+  paginas = computed(() => {
+    return Array.from({ length: this.paginasTotales() }, (_, i) => i + 1);
+  });
+
+  recetasPaginadas = computed(() => {
+    const inicio = (this.paginaActual() - 1) * this.recetasPorPagina();
+    const fin = inicio + this.recetasPorPagina();
+    return this.recetas().slice(inicio, fin);
+  });
+
+  cambiarPagina(nuevaPagina: number) {
+    if (nuevaPagina >= 1 && nuevaPagina <= this.paginasTotales()) {
+      this.paginaActual.set(nuevaPagina);
+    }
+  }
 }
