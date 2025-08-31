@@ -1,0 +1,5 @@
+<select class="border border-grtext-gray-600 rounded-full text-gray-600 py-1 px-3">
+  @for (opcion of opciones(); track opcion) {
+    <option [value]="opcion">{{opcion}}</option>
+  }
+</select>

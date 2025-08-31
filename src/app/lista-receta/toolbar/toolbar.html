@@ -1,20 +1,9 @@
 <section class="mt-2 flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center">
 
-  <div class="flex gap-4 items-center">
-    <select class="border border-grtext-gray-600 rounded-full text-gray-600 py-1 px-3">
-      @for (opcion of dificultadOpciones(); track opcion) {
-        <option [value]="opcion">{{opcion}}</option>
-      }
-    </select>
-  
-    <select class="border border-grtext-gray-600 rounded-full text-gray-600 py-1 px-3">
-      @for (categoria of categorias(); track categoria) {
-        <option [value]="categoria">{{categoria}}</option>
-      }
-    </select>
-  </div>
+  <app-select-filtros/>
 
-  <a class="flex items-center bg-orange-400 text-white w-fit font-semibold rounded-full py-1 px-2
+  <a 
+  class="flex items-center bg-orange-400 text-white w-fit font-semibold rounded-full py-1 px-2
   hover:scale-95 transition-transform duration-100">
     Agregar receta <i class="fa-solid fa-plus"></i>
   </a>
