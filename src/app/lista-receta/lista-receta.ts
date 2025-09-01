@@ -1,6 +1,7 @@
 import { Component, computed, signal } from '@angular/core';
 import { ListaRecetaItem } from "./lista-receta-item/lista-receta-item";
 import { Toolbar } from "./toolbar/toolbar";
+import { Paginacion } from "./paginacion/paginacion";
 
 interface Receta{
   nombre: string,
@@ -13,7 +14,7 @@ interface Receta{
 
 @Component({
   selector: 'app-lista-receta',
-  imports: [ListaRecetaItem, Toolbar],
+  imports: [ListaRecetaItem, Toolbar, Paginacion],
   templateUrl: './lista-receta.html',
   styleUrl: './lista-receta.css'
 })
@@ -77,26 +78,10 @@ export default class ListaReceta {
     }
   ])
 
-  paginaActual = signal(1);
-  recetasPorPagina = signal(6);
+  protected rangoAMostar = signal<{ inicio: number, fin:number }>({ inicio: 0, fin: 6 });
 
-  paginasTotales = computed(() => {
-    return Math.ceil(this.recetas().length / this.recetasPorPagina());
+  recetasPaginadas = computed(()=>{
+    console.log(this.rangoAMostar());
+    return this.recetas().slice(this.rangoAMostar().inicio, this.rangoAMostar().fin);
   })
-
-  paginas = computed(() => {
-    return Array.from({ length: this.paginasTotales() }, (_, i) => i + 1);
-  });
-
-  recetasPaginadas = computed(() => {
-    const inicio = (this.paginaActual() - 1) * this.recetasPorPagina();
-    const fin = inicio + this.recetasPorPagina();
-    return this.recetas().slice(inicio, fin);
-  });
-
-  cambiarPagina(nuevaPagina: number) {
-    if (nuevaPagina >= 1 && nuevaPagina <= this.paginasTotales()) {
-      this.paginaActual.set(nuevaPagina);
-    }
-  }
 }
