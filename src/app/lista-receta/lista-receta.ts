@@ -81,7 +81,6 @@ export default class ListaReceta {
   protected rangoAMostar = signal<{ inicio: number, fin:number }>({ inicio: 0, fin: 6 });
 
   recetasPaginadas = computed(()=>{
-    console.log(this.rangoAMostar());
     return this.recetas().slice(this.rangoAMostar().inicio, this.rangoAMostar().fin);
   })
 }
