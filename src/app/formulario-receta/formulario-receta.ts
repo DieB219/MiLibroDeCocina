@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { Ingrediente } from '../interfaces/ingrediente-Interface';
 
 @Component({
   selector: 'app-formulario-receta',
@@ -7,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './formulario-receta.css'
 })
 export default class FormularioReceta {
+
+  protected title = signal('Crear Nueva Receta')
+
+  protected IngredientesSelect = signal<Ingrediente[]>([])
+
+  ingresarIngrediente(ingrediente: Ingrediente){
+    this.IngredientesSelect.update( ingredientes => [...ingredientes, ingrediente] )
+  }
 
 }
