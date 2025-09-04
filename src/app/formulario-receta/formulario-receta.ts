@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { Ingrediente } from '../interfaces/ingrediente-Interface';
+import { FormIngrediente } from "./form-ingrediente/form-ingrediente";
 
 @Component({
   selector: 'app-formulario-receta',
-  imports: [],
+  imports: [FormIngrediente],
   templateUrl: './formulario-receta.html',
   styleUrl: './formulario-receta.css'
 })

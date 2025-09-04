@@ -1,0 +1,35 @@
+<div class="mt-4 flex [&_h3]:text-lg [&_h3]:font-bold gap-4">
+    
+    <form [formGroup]="formIngredientes" class="flex flex-col gap-4 grow border border-slate-300 p-6 rounded-2xl
+    [&>div>input]:placeholder:text-slate-400 [&>div]:flex [&>div]:flex-col">
+      <div class="first:flex-row justify-between">
+        <h3>Agregar ingredientes</h3>
+        <button (click)="agregarIngrediente()" class="py-1 px-2 bg-orange-400 rounded-sm text-white font-semibold cursor-pointer" type="button">Agregar</button>
+      </div>
+
+      <div>
+        <label>Nombre del ingrediente</label>
+        <input formControlName="nombre" type="text" placeholder="Ingrediente...">
+      </div>
+
+      <div>
+        <label>Cantidad</label>
+        <input formControlName="cantidad" type="number">
+      </div>
+
+      <div>
+        <label>Unidad de medida</label>
+        <input formControlName="medida" type="text" placeholder="lb, kg, taza...">
+      </div>
+    </form>
+
+    <div class="grow border border-slate-300 p-6 rounded-2xl">
+      <h3 >Ingredientes seleccionados</h3>
+      <ul class="list-disc list-inside mt-4">
+        @for (ingrediente of ingredientesSeleccionados(); track ingrediente.nombre) {
+          <li>{{ingrediente.cantidad}} {{ingrediente.medida}} {{ingrediente.nombre}}</li>
+        }
+      </ul>
+    </div>
+
+</div>

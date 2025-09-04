@@ -10,7 +10,7 @@
       <input class="placeholder:text-slate-400" type="text" placeholder="Ingresa el nombre de la receta">
 
       <label for="descripcion">Descripción:</label>
-      <textarea class="shadow-[0px_0px_14px_-3px_rgba(0,_0,_0,_0.1)] border border-slate-100 p-2" name="descripcion"></textarea>
+      <textarea class="shadow-[0px_0px_14px_-3px_rgba(0,_0,_0,_0.1)] border border-slate-200 p-2" name="descripcion"></textarea>
     </div>
 
     <div class="flex mt-4 gap-2 [&>div]:flex [&>div]:flex-col [&>div]:grow">
@@ -40,35 +40,7 @@
       </div>
     </div>
 
-    <div class="mt-4 flex [&_h3]:text-lg [&_h3]:font-bold gap-4 [&>div]:border [&>div]:border-slate-300 [&>div]:p-6 [&>div]:rounded-2xl">
-      <div class="flex flex-col gap-4 grow [&>div>input]:placeholder:text-slate-400 [&>div]:flex [&>div]:flex-col">
-        <div class="first:flex-row justify-between">
-          <h3>Agregar ingredientes</h3>
-          <button class="py-1 px-2 bg-orange-400 rounded-sm text-white font-semibold cursor-pointer" type="button">Agregar</button>
-        </div>
-
-        <div>
-          <label>Nombre del ingrediente</label>
-          <input  type="text" placeholder="Ingrediente...">
-        </div>
-
-        <div>
-          <label>Cantidad</label>
-          <input type="number">
-        </div>
-
-        <div>
-          <label>Unidad de medida</label>
-          <input type="text" placeholder="lb, kg, taza...">
-        </div>
-      </div>
-
-      <div class="grow">
-        <h3 >Ingredientes seleccionados</h3>
-        <ul class="list-disc list-inside mt-4">
-        </ul>
-      </div>
-    </div>
+    <app-form-ingrediente/>
   </form>
 
 </section>
