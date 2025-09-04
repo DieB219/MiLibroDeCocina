@@ -25,9 +25,17 @@
 
     <div class="grow border border-slate-300 p-6 rounded-2xl">
       <h3 >Ingredientes seleccionados</h3>
-      <ul class="list-disc list-inside mt-4">
-        @for (ingrediente of ingredientesSeleccionados(); track ingrediente.nombre) {
-          <li>{{ingrediente.cantidad}} {{ingrediente.medida}} {{ingrediente.nombre}}</li>
+      <ul class="mt-4">
+        @for (ingrediente of ingredientes(); track ingrediente.nombre) {
+          <li class="bg-slate-200 p-3 rounded-lg mb-2 text-lg flex items-center">
+              <div class="grow">
+                {{ingrediente.nombre}} {{ingrediente.cantidad}}{{ingrediente.medida}}
+              </div>
+
+              <button (click)="eliminarIngrediente(ingrediente.nombre)" type="button" class="cursor-pointer hover:text-red-500">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+          </li>
         }
       </ul>
     </div>
