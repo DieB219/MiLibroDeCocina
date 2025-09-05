@@ -25,7 +25,7 @@
 
     <div class="grow border border-slate-300 p-6 rounded-2xl">
       <h3 >Ingredientes seleccionados</h3>
-      <ul class="mt-4">
+      <ul class="h-60 mt-4 overflow-y-scroll">
         @for (ingrediente of ingredientes(); track ingrediente.nombre) {
           <li class="bg-slate-200 p-3 rounded-lg mb-2 text-lg flex items-center">
               <div class="grow">
