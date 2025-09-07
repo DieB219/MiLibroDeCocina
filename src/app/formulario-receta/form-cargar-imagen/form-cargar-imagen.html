@@ -1,10 +1,22 @@
 <div class="p-6 h-full border border-slate-300 rounded-2xl flex flex-col">
   <h3 class="mb-2 font-bold text-lg">Imagen de la receta</h3>
 
-  <div class="px-4 py-10 border-2 border-dashed w-full rounded-2xl flex flex-col justify-center items-center [&>i]:text-3xl
+  <div (click)="inputfile.click()" (drop)="cargarImagen($event.dataTransfer?.files ?? null); $event.preventDefault()" (dragover)="$event.preventDefault()"
+  class="px-4 py-10 border-2 border-dashed w-full rounded-2xl flex flex-col justify-center items-center [&>i]:text-3xl
   cursor-pointer hover:border-orange-400 hover:text-orange-400 group flex-1">
+
+    <input #inputfile type="file" class="hidden" accept="image/*" (change)="cargarImagen(inputfile.files)">
     <i class="group-hover:-translate-y-2.5 transition-all duration-100 fa-solid fa-arrow-up-from-bracket"></i>
-    <p class="mt-2 font-semibold">Arrastra y suelta imágenes aquí, o haz clic para seleccionar archivos</p>
+    <p class="mt-2 font-semibold text-center">Arrastra y suelta imágenes aquí, o haz clic para seleccionar archivos</p>
+
+    @if(formImage.value.imagen?.length){
+      @for (img of formImage.value.imagen; track img) {
+        <div>
+          <img [src]="img | filePreview" width="200px" height="200px">
+        </div>
+      }
+    }
+
   </div>
 
 </div>
