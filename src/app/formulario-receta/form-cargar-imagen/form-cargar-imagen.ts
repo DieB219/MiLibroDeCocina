@@ -6,7 +6,6 @@ import { FilePreviewPipe } from "../../shared/pipes/file-preview-pipe";
   selector: 'app-form-cargar-imagen',
   imports: [FilePreviewPipe],
   templateUrl: './form-cargar-imagen.html',
-  styleUrl: './form-cargar-imagen.css'
 })
 export class FormCargarImagen {
 
