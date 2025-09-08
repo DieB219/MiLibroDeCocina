@@ -9,6 +9,14 @@
       <label for="nombre">Nombre:</label>
       <input class="placeholder:text-slate-400" type="text" placeholder="Ingresa el nombre de la receta">
 
+      <label for="imagen">Url imagen:</label>
+      <input (blur)="imagenValida(imagenReceta.value)" #imagenReceta class="placeholder:text-slate-400" type="text" placeholder="Ingresa la dirección de la imagen">
+      @if (existeImagen()) {
+        <span>
+          <img [src]="imagenReceta.value" width="300" height="400">
+        </span>
+      }
+
       <label for="descripcion">Descripción:</label>
       <textarea class="shadow-[0px_0px_14px_-3px_rgba(0,_0,_0,_0.1)] border border-slate-200 p-2" name="descripcion"></textarea>
     </div>
