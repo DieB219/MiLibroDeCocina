@@ -24,7 +24,7 @@
     <div class="flex mt-4 gap-2 [&>div]:flex [&>div]:flex-col [&>div]:grow">
       <div>
         <label for="difucultad">Dificultad</label>
-        <select name="dificultad">
+        <select formControlName="dificultad" name="dificultad">
           <option value="" disabled selected>Selecciona una dificultad</option>
           <option value="facil">Fácil</option>
           <option value="media">Media</option>
@@ -34,7 +34,7 @@
 
       <div>
         <label for="categoria">Categoria</label>
-        <select name="categoria">
+        <select formControlName="categoria" name="categoria">
           <option value="" disabled selected>Selecciona una categoria</option>
           <option value="facil">Desayuno</option>
           <option value="media">Almuerzo</option>
@@ -44,7 +44,7 @@
 
       <div>
         <label for="tiempo">Tiempo de preparación (minutos):</label>
-        <input type="number">
+        <input formControlName="tiempo" type="number">
       </div>
     </div>
 
