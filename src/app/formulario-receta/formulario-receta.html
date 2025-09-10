@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <app-form-ingrediente/>
+    <app-form-ingrediente [formGroup]="formCrearReceta.controls.ingredientesReceta" />
 
     <div class="mt-4">
       <app-form-pasos-receta [formGroup]="formCrearReceta.controls.pasosReceta" />

@@ -1,6 +1,6 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { Ingrediente } from '../../interfaces/ingrediente-Interface';
-import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-ingrediente',
@@ -9,31 +9,29 @@ import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './form-ingrediente.css'
 })
 export class FormIngrediente {
-
+  formGroup = input.required<FormGroup>()
+  
   private fb = inject(NonNullableFormBuilder)
   formIngredientes = this.fb.group({
     nombre: ['', [Validators.required]],
     cantidad: [1, [Validators.required]],
     medida: ['']
   })
+  
+  ingredientes = computed(()=> this.formGroup().get('ingredientes') as FormArray<FormControl<Ingrediente>>)
 
-  protected mapIngrediente = new Map<string, Ingrediente>()
-  protected ingredientes = signal<Ingrediente[]>([])
+  agregarIngrediente(){
+    if(this.formIngredientes.valid){
+      const ingrediente: Ingrediente = this.formIngredientes.getRawValue()
+      this.ingredientes().push(this.fb.control(ingrediente))
 
-  agregarIngrediente() {
-    if(this.formIngredientes.valid) {
-      const ingrediente: Ingrediente = this.formIngredientes.getRawValue() // valores del formulario
-      // const id = this.mapIngrediente.size // id autoincremental
-
-      this.mapIngrediente.set(ingrediente.nombre, ingrediente)
-      this.ingredientes.set(Array.from(this.mapIngrediente.values()))
-      this.formIngredientes.reset();
+      this.formIngredientes.reset()
     }
-    else{this.formIngredientes.markAllAsTouched()}
   }
 
-  eliminarIngrediente(clave: string) {
-    this.mapIngrediente.delete(clave)
-    this.ingredientes.set(Array.from(this.mapIngrediente.values()))
+  eliminarIngrediente(posicion: number){
+    console.log(this.ingredientes().value);
+    this.ingredientes().removeAt(posicion)
   }
+
 }

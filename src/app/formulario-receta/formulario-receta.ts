@@ -24,7 +24,9 @@ export default class FormularioReceta {
     dificultad: ['', [Validators.required]],
     categoria: ['', [Validators.required]],
     tiempo: [1, [Validators.required]],
-    ingredientes: [[], [Validators.required]],
+    ingredientesReceta: this.fb.group({
+      ingredientes: this.fb.array([])
+    }),
     pasosReceta: this.fb.group({
       pasos: this.fb.array([])
     })
