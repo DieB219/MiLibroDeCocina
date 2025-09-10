@@ -1,16 +1,16 @@
 <section class="flex justify-center items-center">
 
-  <form class="w-full p-6 [&_div>label]:text-sm [&_div>label]:font-semibold [&_div>label]:mb-2
+  <form [formGroup]="formCrearReceta" class="w-full p-6 [&_div>label]:text-sm [&_div>label]:font-semibold [&_div>label]:mb-2
     [&_div>input]:shadow-[0px_0px_14px_-3px_rgba(0,_0,_0,_0.1)] [&_div>input]:border [&_div>input]:border-slate-200 [&_div>input]:p-2
     [&_div>select]:shadow-[0px_0px_14px_-3px_rgba(0,_0,_0,_0.1)] [&_div>select]:border [&_div>select]:border-slate-200 [&_div>select]:p-2">
     <h2 class="text-3xl font-bold">{{title()}}</h2>
 
     <div class="flex flex-col mt-4 [&>input]:mb-4">
       <label for="nombre">Nombre:</label>
-      <input class="placeholder:text-slate-400" type="text" placeholder="Ingresa el nombre de la receta">
+      <input formControlName="nombre" class="placeholder:text-slate-400" type="text" placeholder="Ingresa el nombre de la receta">
 
       <label for="imagen">Url imagen:</label>
-      <input (blur)="imagenValida(imagenReceta.value)" #imagenReceta class="placeholder:text-slate-400" type="text" placeholder="Ingresa la dirección de la imagen">
+      <input formControlName="urlImagen" (blur)="imagenValida(imagenReceta.value)" #imagenReceta class="placeholder:text-slate-400" type="text" placeholder="Ingresa la dirección de la imagen">
       @if (existeImagen()) {
         <span>
           <img [src]="imagenReceta.value" width="300" height="400">
@@ -18,7 +18,7 @@
       }
 
       <label for="descripcion">Descripción:</label>
-      <textarea class="shadow-[0px_0px_14px_-3px_rgba(0,_0,_0,_0.1)] border border-slate-200 p-2" name="descripcion"></textarea>
+      <textarea formControlName="descripcion" class="shadow-[0px_0px_14px_-3px_rgba(0,_0,_0,_0.1)] border border-slate-200 p-2" name="descripcion"></textarea>
     </div>
 
     <div class="flex mt-4 gap-2 [&>div]:flex [&>div]:flex-col [&>div]:grow">
@@ -51,8 +51,10 @@
     <app-form-ingrediente/>
 
     <div class="mt-4">
-      <app-form-pasos-receta/>
+      <app-form-pasos-receta [formGroup]="formCrearReceta.controls.pasosReceta" />
     </div>
+
+    <button (click)="mostrar()" type="submit">Crear</button>
   </form>
 
 </section>
