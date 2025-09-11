@@ -14,6 +14,18 @@ export class RecetaService {
 
   recetas = signal<Receta[]>(JSON.parse(localStorage.getItem('recetas') ?? '[]'))
   
+  dificultadOpciones = signal<string[]>([
+    'Fácil',
+    'Media',
+    'Difícil'
+  ])
+
+  categorias = signal<string[]>([
+    'Desayuno',
+    'Almuerzo',
+    'Cena'
+  ])
+  
   guardarReceta(receta: Receta){
     this.recetas.update(recetas => [...recetas, receta])
   }
@@ -26,4 +38,6 @@ export class RecetaService {
       img.src = url;
     });
   }
+
+
 }

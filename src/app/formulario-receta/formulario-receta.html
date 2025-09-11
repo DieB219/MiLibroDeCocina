@@ -26,9 +26,9 @@
         <label for="difucultad">Dificultad</label>
         <select formControlName="dificultad" name="dificultad">
           <option value="" disabled selected>Selecciona una dificultad</option>
-          <option value="facil">Fácil</option>
-          <option value="media">Media</option>
-          <option value="dificil">Difícil</option>
+          @for (option of recetaService.dificultadOpciones(); track $index) {
+            <option [value]="option">{{option}}</option>
+          }
         </select>
       </div>
 
@@ -36,9 +36,9 @@
         <label for="categoria">Categoria</label>
         <select formControlName="categoria" name="categoria">
           <option value="" disabled selected>Selecciona una categoria</option>
-          <option value="facil">Desayuno</option>
-          <option value="media">Almuerzo</option>
-          <option value="dificil">Cena</option>
+          @for (option of recetaService.categorias(); track $index) {
+            <option [value]="option">{{option}}</option>
+          }
         </select>
       </div>
 

@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ItemFiltro } from "./item-filtro/item-filtro";
+import { RecetaService } from '../../../services/receta-service';
 
 @Component({
   selector: 'app-select-filtros',
@@ -8,15 +9,5 @@ import { ItemFiltro } from "./item-filtro/item-filtro";
   styleUrl: './select-filtros.css'
 })
 export class SelectFiltros {
-  protected dificultadOpciones = signal<string[]>([
-    'Fácil',
-    'Media',
-    'Difícil'
-  ])
-
-  protected categorias = signal<string[]>([
-    'Desayuno',
-    'Almuerzo',
-    'Cena'
-  ])
+  recetaService = inject(RecetaService)
 }
