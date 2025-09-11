@@ -1,6 +1,6 @@
 <section class="flex justify-center items-center">
 
-  <form [formGroup]="formCrearReceta" class="w-full p-6 [&_div>label]:text-sm [&_div>label]:font-semibold [&_div>label]:mb-2
+  <form [formGroup]="formCrearReceta" class="flex flex-col w-full p-6 [&_div>label]:text-sm [&_div>label]:font-semibold [&_div>label]:mb-2
     [&_div>input]:shadow-[0px_0px_14px_-3px_rgba(0,_0,_0,_0.1)] [&_div>input]:border [&_div>input]:border-slate-200 [&_div>input]:p-2
     [&_div>select]:shadow-[0px_0px_14px_-3px_rgba(0,_0,_0,_0.1)] [&_div>select]:border [&_div>select]:border-slate-200 [&_div>select]:p-2">
     <h2 class="text-3xl font-bold">{{title()}}</h2>
@@ -21,7 +21,7 @@
       <textarea formControlName="descripcion" class="shadow-[0px_0px_14px_-3px_rgba(0,_0,_0,_0.1)] border border-slate-200 p-2" name="descripcion"></textarea>
     </div>
 
-    <div class="flex mt-4 gap-2 [&>div]:flex [&>div]:flex-col [&>div]:grow">
+    <div class="flex flex-col mt-4 gap-2 [&>div]:flex [&>div]:flex-col [&>div]:grow md:flex-row">
       <div>
         <label for="difucultad">Dificultad</label>
         <select formControlName="dificultad" name="dificultad">
@@ -54,7 +54,11 @@
       <app-form-pasos-receta [formGroup]="formCrearReceta.controls.pasosReceta" />
     </div>
 
-    <button (click)="recetaService.guardarReceta(formCrearReceta.getRawValue())" type="submit">Crear</button>
+    <button class="my-4 bg-orange-500 py-2 px-4 rounded-2xl text-lg text-white font-bold w-fit mx-auto
+    hover:scale-95 transition-all duration-100 cursor-pointer" 
+    (click)="recetaService.guardarReceta(formCrearReceta.getRawValue())" type="submit">
+      Crear
+    </button>
   </form>
 
 </section>

@@ -1,9 +1,9 @@
-<div class="mt-4 flex [&_h3]:text-lg [&_h3]:font-bold gap-4">
+<div class="mt-4 flex flex-col [&_h3]:font-bold gap-4 md:flex-row">
     
     <form [formGroup]="formIngredientes" class="flex flex-col gap-4 grow border border-slate-300 p-6 rounded-2xl
     [&>div>input]:placeholder:text-slate-400 [&>div]:flex [&>div]:flex-col">
       <div class="first:flex-row justify-between">
-        <h3>Agregar ingredientes</h3>
+        <h3 class="text-md sm:text-lg">Agregar ingredientes</h3>
         <button (click)="agregarIngrediente()" class="py-1 px-2 bg-orange-400 rounded-sm text-white font-semibold cursor-pointer" type="button">Agregar</button>
       </div>
 
@@ -24,11 +24,11 @@
     </form>
 
     <div class="grow border border-slate-300 p-6 rounded-2xl">
-      <h3 >Ingredientes seleccionados</h3>
+      <h3 class="text-md sm:text-lg">Ingredientes seleccionados</h3>
       <ul class="h-60 mt-4 overflow-y-scroll">
         @for (ingrediente of ingredientes().value; track $index) {
           <li class="bg-slate-200 p-3 rounded-lg mb-2 text-lg flex items-center">
-              <div class="grow">
+              <div class="grow text-ellipsis overflow-hidden line-clamp-1">
                 {{ingrediente.nombre}} {{ingrediente.cantidad}}{{ingrediente.medida}}
               </div>
 
