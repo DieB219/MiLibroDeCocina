@@ -1,10 +1,16 @@
+import { Ingrediente } from "./ingrediente-Interface";
+
 export interface Receta{
   nombre: string,
   urlImagen: string,
   descripcion: string,
-  dificultad: number,
+  dificultad: string,
   categoria: string,
-  tiempo: string,
-  ingredientes: string[],
-  pasos: string[]
+  tiempo: number,
+  ingredientesReceta: {
+    ingredientes: Ingrediente[];
+  };
+  pasosReceta: {
+    pasos: string[];
+  };
 }

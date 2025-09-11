@@ -3,6 +3,8 @@ import { FormIngrediente } from "./form-ingrediente/form-ingrediente";
 import { FormControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormPasosReceta } from "./form-pasos-receta/form-pasos-receta";
 import { Receta } from '../interfaces/receta-interface';
+import { RecetaService } from '../services/receta-service';
+import { Ingrediente } from '../interfaces/ingrediente-Interface';
 
 
 @Component({
@@ -12,6 +14,8 @@ import { Receta } from '../interfaces/receta-interface';
   styleUrl: './formulario-receta.css'
 })
 export default class FormularioReceta {
+
+  recetaService = inject(RecetaService)
 
   protected title = signal('Crear Nueva Receta')
   protected existeImagen = signal(false)
@@ -25,29 +29,16 @@ export default class FormularioReceta {
     categoria: ['', [Validators.required]],
     tiempo: [1, [Validators.required]],
     ingredientesReceta: this.fb.group({
-      ingredientes: this.fb.array([])
+      ingredientes: this.fb.array<Ingrediente>([])
     }),
     pasosReceta: this.fb.group({
-      pasos: this.fb.array([])
+      pasos: this.fb.array<string>([])
     })
   })
 
-  validarImagen(url: string): Promise<boolean> {
-    return new Promise((resolve) => {
-      const img = new Image();
-      img.onload = () => resolve(true);
-      img.onerror = () => resolve(false);
-      img.src = url;
-    });
-  }
-
   async imagenValida(url:string){
-    const resultado = await this.validarImagen(url)
+    const resultado = await this.recetaService.validarImagenReceta(url)
     this.existeImagen.set(resultado)
-  }
-
-  mostrar(){
-    console.log(this.formCrearReceta.getRawValue());
   }
 
 }

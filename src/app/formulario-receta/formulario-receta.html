@@ -54,7 +54,7 @@
       <app-form-pasos-receta [formGroup]="formCrearReceta.controls.pasosReceta" />
     </div>
 
-    <button (click)="mostrar()" type="submit">Crear</button>
+    <button (click)="recetaService.guardarReceta(formCrearReceta.getRawValue())" type="submit">Crear</button>
   </form>
 
 </section>
