@@ -2,7 +2,7 @@
 shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)] transition-all duration-200" [class.h-16]="!estaAbierto()" [class.h-32]="estaAbierto()">
 
   <section class="flex gap-4 items-center justify-between">
-    <a class="flex gap-2 items-center" routerLink="/">
+    <a [routerLink]="'/'" class="flex gap-2 items-center" routerLink="/">
       <img class="size-10" src="assets/libro-de-recetas.webp" alt="Logo del sitio Mi Libro De Concina">
       <h1 class="text-2xl font-bold text-nowrap">Mi Libro De Cocina</h1>
     </a>
