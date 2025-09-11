@@ -2,12 +2,12 @@
     <article class="rounded-2xl overflow-hidden h-full shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]
     hover:scale-105 transition-transform duration-100 animate-fade-up reveal-scroll">
       <div class="w-full">
-        <img class="w-full h-52 object-cover" [src]="receta().imagen" [alt]="receta().nombre">
+        <img class="w-full h-52 object-cover" [src]="receta().urlImagen" [alt]="receta().nombre">
       </div>
     
       <header class="font-bold flex items-center justify-between p-4">
         <h3 class="text-2xl text-ellipsis overflow-hidden text-nowrap">{{receta().nombre}}</h3>
-        <span class="text-lg text-gray-600 flex items-center gap-2"><i class="fa-regular fa-clock"></i> {{receta().duracion}}</span>
+        <span class="text-lg text-gray-600 flex items-center gap-2"><i class="fa-regular fa-clock"></i> {{receta().tiempo}}</span>
       </header>
     
       <p class="px-4 text-gray-600 text-ellipsis overflow-hidden line-clamp-2">{{receta().descripcion}}</p>

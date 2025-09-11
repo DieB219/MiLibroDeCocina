@@ -1,13 +1,6 @@
 import { Component, input, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-interface Receta{
-  nombre: string,
-  descripcion: string,
-  categoria: string,
-  dificultad: string,
-  duracion: number,
-  imagen: string
-}
+import { Receta } from '../../interfaces/receta-interface';
 
 @Component({
   selector: 'app-lista-receta-item',

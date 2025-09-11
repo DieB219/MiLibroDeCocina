@@ -6,11 +6,16 @@ import { Receta } from '../interfaces/receta-interface';
 })
 export class RecetaService {
 
+  constructor(){
+    effect(()=>{
+      localStorage.setItem('recetas', JSON.stringify(this.recetas()))
+    })
+  }
+
   recetas = signal<Receta[]>(JSON.parse(localStorage.getItem('recetas') ?? '[]'))
   
   guardarReceta(receta: Receta){
     this.recetas.update(recetas => [...recetas, receta])
-    localStorage.setItem('recetas', JSON.stringify(this.recetas()))
   }
 
   validarImagenReceta(url: string): Promise<boolean> {
