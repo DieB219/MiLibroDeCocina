@@ -4,7 +4,13 @@ export const routes: Routes = [
 
   {
     path: '',
-    loadComponent: () => import('./lista-receta/lista-receta')
+    loadComponent: () => import('./lista-receta/lista-receta'),
+    children:[
+      {
+        path: ':nombre',
+        loadComponent: () => import('./lista-receta/lista-receta')
+      }
+    ]
   },
   {
     path: 'formulario',
