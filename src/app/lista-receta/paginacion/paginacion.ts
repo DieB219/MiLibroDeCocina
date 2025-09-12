@@ -12,7 +12,7 @@ export class Paginacion {
   rango = output<{ inicio: number, fin:number }>();
 
   paginaActual = signal(1);
-  recetasPorPagina = signal(6);
+  recetasPorPagina = signal(9);
 
   paginasTotales = computed(() => {
     return Math.ceil(this.recetasTotales() / this.recetasPorPagina());

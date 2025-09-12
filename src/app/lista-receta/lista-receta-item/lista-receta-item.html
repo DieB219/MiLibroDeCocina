@@ -2,7 +2,13 @@
     <article class="rounded-2xl overflow-hidden h-full shadow-[0px_4px_6px_0px_rgba(0,_0,_0,_0.1)]
     hover:scale-105 transition-transform duration-100 animate-fade-up reveal-scroll">
       <div class="w-full">
-        <img class="w-full h-52 object-cover" [src]="receta().urlImagen" [alt]="receta().nombre">
+        @if(imagenValida()){
+          <img class="w-full h-52 object-cover" [src]="receta().urlImagen" [alt]="receta().nombre">
+        }@else {
+          <div class="flex justify-center items-center w-full h-52 bg-gradient-to-l from-slate-200 to-slate-300 overflow-hidden">
+            <img class="size-40 object-cover opacity-25" src="assets/sin-imagen.png" alt="Sin imagen">
+          </div>
+        }
       </div>
     
       <header class="font-bold flex items-center justify-between p-4">
