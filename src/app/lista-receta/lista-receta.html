@@ -4,13 +4,21 @@
     <app-toolbar/>
   </div>
   
-  <section class="mt-7 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-    @for (receta of recetasPaginadas(); track receta.nombre) {
-      <app-lista-receta-item [receta]="receta"/>
+  
+    @if (totalRecetas() !== 0) {
+      <section class="mt-7 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        @for (receta of recetasPaginadas(); track receta.nombre) {
+          <app-lista-receta-item [receta]="receta"/>
+        }
+      </section>
+      
+      <app-paginacion [recetasTotales]="totalRecetas()" (rango)="rangoAMostar.set($event)"/>
+    } @else {
+      <section class="w-full h-full flex flex-col justify-center items-center">
+        <img class="size-52" src="assets/sin-recetas.png" alt="Sin recetas encontradas">
+        <h2 class="grow font-bold text-2xl uppercase mt-4">recetas encontradas</h2>
+      </section>
     }
-  </section>
-
-  <app-paginacion [recetasTotales]="totalRecetas()" (rango)="rangoAMostar.set($event)"/>
 
 </section>
 
