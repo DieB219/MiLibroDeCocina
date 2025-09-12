@@ -39,5 +39,11 @@ export class RecetaService {
     });
   }
 
+  BuscarReceta(nombre: string){
+    return this.recetas().filter(receta=>{
+      const nombreReceta = receta.nombre.toLowerCase()
+      return nombreReceta.includes(nombre.toLowerCase())
+    })
+  }
 
 }

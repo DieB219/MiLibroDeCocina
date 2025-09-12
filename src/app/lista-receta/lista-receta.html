@@ -10,7 +10,7 @@
     }
   </section>
 
-  <app-paginacion [recetasTotales]="recetaService.recetas().length" (rango)="rangoAMostar.set($event)"/>
+  <app-paginacion [recetasTotales]="totalRecetas()" (rango)="rangoAMostar.set($event)"/>
 
 </section>
 
