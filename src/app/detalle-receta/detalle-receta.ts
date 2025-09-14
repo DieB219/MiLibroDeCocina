@@ -25,4 +25,10 @@ export default class DetalleReceta implements OnInit {
     Media: 'text-orange-600 bg-orange-200',
     Difícil: 'text-red-600 bg-red-200'
   })
+
+  protected textMinutos = computed(() => {
+    if(this.receta()?.tiempo === 1) return 'minuto'
+
+    return 'minutos'
+  })
 }
