@@ -5,6 +5,7 @@ import { FormPasosReceta } from "./form-pasos-receta/form-pasos-receta";
 import { Receta } from '../interfaces/receta-interface';
 import { RecetaService } from '../services/receta-service';
 import { Ingrediente } from '../interfaces/ingrediente-Interface';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,6 +17,7 @@ import { Ingrediente } from '../interfaces/ingrediente-Interface';
 export default class FormularioReceta {
 
   recetaService = inject(RecetaService)
+  route = inject(Router)
 
   protected title = signal('Crear Nueva Receta')
   protected existeImagen = signal(false)
@@ -56,6 +58,7 @@ export default class FormularioReceta {
       this.formPasos.clear()    
       this.formIngredientes.clear()  
       this.formCrearReceta.reset()
+      this.route.navigate(['/'])
     }
   }
 
