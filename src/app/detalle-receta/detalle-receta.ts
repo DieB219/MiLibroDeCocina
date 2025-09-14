@@ -1,6 +1,6 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { RecetaService } from '../services/receta-service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Receta } from '../interfaces/receta-interface';
 
 @Component({
@@ -12,6 +12,7 @@ import { Receta } from '../interfaces/receta-interface';
 export default class DetalleReceta implements OnInit {
   recetaService = inject(RecetaService)
   route = inject(ActivatedRoute)
+  ruta = inject(Router)
   
   NombreRecetaURL = signal('')
   ngOnInit(): void {
@@ -31,4 +32,9 @@ export default class DetalleReceta implements OnInit {
 
     return 'minutos'
   })
+
+  eliminarReceta(){
+    this.recetaService.eliminarReceta(this.NombreRecetaURL())
+    this.ruta.navigate(['/'])
+  }
 }

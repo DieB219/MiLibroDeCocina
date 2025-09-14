@@ -50,4 +50,10 @@ export class RecetaService {
     return this.recetas().find(valor => valor.nombre === nombre)
   }
 
+  eliminarReceta(nombre:string){
+    const indiceReceta = this.recetas().findIndex(value => value.nombre === nombre)
+    this.recetas().splice(indiceReceta, 1)
+    localStorage.setItem('recetas', JSON.stringify(this.recetas()))
+  }
+
 }

@@ -39,7 +39,7 @@
 
   <div class=" ml-4 mt-4 md:mt-0 flex flex-col">
     <img class="h-64 min-w-80 rounded-2xl object-cover" [src]="receta()?.urlImagen" [alt]="'imagen de' + receta()?.nombre">
-    <button class="mt-10 text-center border border-black py-3 font-semibold text-lg 
+    <button (click)="eliminarReceta()" class="mt-10 text-center border border-black py-3 font-semibold text-lg 
     hover:border-red-500 hover:bg-red-500 hover:text-white cursor-pointer transition-all duration-200" 
     type="button">
       Eliminar
