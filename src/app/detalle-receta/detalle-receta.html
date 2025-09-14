@@ -1,0 +1,48 @@
+<section class="flex flex-col gap-1 lg:flex-row md:gap-5">
+  <div class="grow ml-4">
+    <div>
+      <div class="flex font-bold items-center">
+        <h2 class="grow text-4xl">
+          {{receta()?.nombre}} 
+        </h2>
+        <span class="text-2xl">
+          <i class="fa-regular fa-clock"></i>{{receta()?.tiempo}} minutos
+        </span>
+      </div>
+      <p class="mt-1 text-slate-500">{{receta()?.descripcion}}</p>
+
+      <ul class="flex gap-3 mt-4">
+        <span [class]="coloresDificultad()[receta()?.dificultad ?? ''] + ' font-medium rounded-full py-1 px-3'">{{receta()?.dificultad}}</span>
+        <span class="border border-grtext-gray-600 rounded-full text-gray-600 py-1 px-3">{{receta()?.categoria}}</span>
+      </ul>
+    </div>    
+
+    <div>
+      <h3 class="text-xl mt-4 font-semibold">Ingredientes:</h3>
+      <ul class="flex flex-col gap-2 list-disc pl-7">
+        @for (ingrediente of receta()?.ingredientesReceta?.ingredientes; track ingrediente) {
+          <li class="text-lg">{{ingrediente.nombre}} {{ingrediente.cantidad}}{{ingrediente.medida}}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="bg-red-100 p-4 rounded-2xl mt-4">
+      <h3 class="text-xl font-semibold">Pasos:</h3>
+      <ol class="flex flex-col gap-2 list-decimal pl-7">
+        @for (pasos of receta()?.pasosReceta?.pasos; track pasos) {
+          <li class="text-lg">{{pasos}}</li>
+        }
+      </ol>
+    </div>
+
+  </div>
+
+  <div class=" ml-4 mt-4 md:mt-0 flex flex-col">
+    <img class="h-64 min-w-80 rounded-2xl object-cover" [src]="receta()?.urlImagen" [alt]="'imagen de' + receta()?.nombre">
+    <button class="mt-10 text-center border border-black py-3 font-semibold text-lg 
+    hover:border-red-500 hover:bg-red-500 hover:text-white cursor-pointer transition-all duration-200" 
+    type="button">
+      Eliminar
+    </button>
+  </div>
+</section>

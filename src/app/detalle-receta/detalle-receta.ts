@@ -1,0 +1,28 @@
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { RecetaService } from '../services/receta-service';
+import { ActivatedRoute } from '@angular/router';
+import { Receta } from '../interfaces/receta-interface';
+
+@Component({
+  selector: 'app-receta',
+  imports: [],
+  templateUrl: './detalle-receta.html',
+  styleUrl: './detalle-receta.css'
+})
+export default class DetalleReceta implements OnInit {
+  recetaService = inject(RecetaService)
+  route = inject(ActivatedRoute)
+  
+  NombreRecetaURL = signal('')
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => this.NombreRecetaURL.set(params.get('nombre') ?? ''))
+  }
+
+  receta = computed(() => this.recetaService.obtenerReceta(this.NombreRecetaURL()))
+
+  protected coloresDificultad = signal<Record<string,string>>({
+    Fácil: 'text-green-600 bg-green-200',
+    Media: 'text-orange-600 bg-orange-200',
+    Difícil: 'text-red-600 bg-red-200'
+  })
+}

@@ -46,4 +46,8 @@ export class RecetaService {
     })
   }
 
+  obtenerReceta(nombre:string){
+    return this.recetas().find(valor => valor.nombre === nombre)
+  }
+
 }

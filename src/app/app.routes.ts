@@ -13,6 +13,10 @@ export const routes: Routes = [
   {
     path: ':nombre',
     loadComponent: () => import('./lista-receta/lista-receta')
+  },
+  {
+    path: 'receta/:nombre',
+    loadComponent: () => import('./detalle-receta/detalle-receta')
   }
 
 ];
